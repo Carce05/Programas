@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_programa">
+
+    <fragment
+        android:id="@+id/nav_programa"
+        android:name="com.programas.ui.programa.ProgramaFragment"
+        android:label="@string/menu_programa"
+        tools:layout="@layout/fragment_programa" >
+        <action
+            android:id="@+id/action_nav_programa_to_addProgramaFragment"
+            app:destination="@id/addProgramaFragment" />
+        <action
+            android:id="@+id/action_nav_programa_to_updateProgramaFragment"
+            app:destination="@id/updateProgramaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.programas.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.programas.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addProgramaFragment"
+        android:name="com.programas.ui.programa.AddProgramaFragment"
+        android:label="@string/bt_agregar"
+        tools:layout="@layout/fragment_add_programa" >
+        <action
+            android:id="@+id/action_addProgramaFragment_to_nav_programa"
+            app:destination="@id/nav_programa" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateProgramaFragment"
+        android:name="com.programas.ui.programa.UpdateProgramaFragment"
+        android:label="@string/bt_actualizar"
+        tools:layout="@layout/fragment_update_programa" >
+        <action
+            android:id="@+id/action_updateProgramaFragment_to_nav_programa"
+            app:destination="@id/nav_programa" />
+        <argument
+            android:name="programa"
+            app:argType="com.programas.model.Programa" />
+    </fragment>
+</navigation>

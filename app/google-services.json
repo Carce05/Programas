@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "32655116567",
+    "project_id": "programas-eed9b",
+    "storage_bucket": "programas-eed9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32655116567:android:f1616a36f5f98c540acf52",
+        "android_client_info": {
+          "package_name": "com.programas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32655116567-0o6nit3050bb6gmrpuo5eo1ft4duefkv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7i9rruliKNn3eGDm1BoR_FJxW3CpT4t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32655116567-0o6nit3050bb6gmrpuo5eo1ft4duefkv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
