@@ -37,7 +37,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_telefono"
+            android:id="@+id/tv_cadena"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -45,12 +45,12 @@
             android:textAlignment="center"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.653"
             app:layout_constraintStart_toEndOf="@+id/imagen"
             app:layout_constraintTop_toBottomOf="@+id/tv_nombre" />
 
         <TextView
-            android:id="@+id/tv_correo"
+            android:id="@+id/tv_canal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -58,12 +58,12 @@
             android:textAlignment="textStart"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.653"
             app:layout_constraintStart_toEndOf="@+id/imagen"
-            app:layout_constraintTop_toBottomOf="@+id/tv_telefono" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_cadena" />
 
         <TextView
-            android:id="@+id/tv_web"
+            android:id="@+id/tv_hora_transmision"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -71,8 +71,39 @@
             android:textAlignment="textStart"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.658"
             app:layout_constraintStart_toEndOf="@+id/imagen"
-            app:layout_constraintTop_toBottomOf="@+id/tv_correo" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_canal" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="44dp"
+            android:text="Cadena: "
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cadena"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nombre"
+            app:layout_constraintVertical_bias="0.666" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="8dp"
+            android:text="Canal: "
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/tv_canal" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="40dp"
+            android:text="Transmisión: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_hora_transmision" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

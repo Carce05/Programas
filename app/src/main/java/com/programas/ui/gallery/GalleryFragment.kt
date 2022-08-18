@@ -69,7 +69,7 @@ class GalleryFragment : Fragment(), OnMapReadyCallback{
             //se instruye al map para que se vena programas segun coordenadas
             programaViewModel.getAllData.observe(viewLifecycleOwner){
                 programas ->
-                updateMap(programas)
+                //updateMap(programas)
                 ubicaCamara()
             }
 
@@ -104,17 +104,5 @@ class GalleryFragment : Fragment(), OnMapReadyCallback{
         }
     }
 
-    private fun updateMap(programas: List<Programa>) {
-        if (mapReady){
-            programas.forEach{ programa -> if (programa.latitud?.isFinite() ==true && programa.logitud?.isFinite() == true){
-                val marca = LatLng(programa.latitud,programa.logitud)
 
-                googleMap.addMarker(MarkerOptions().position(marca).title(programa.nombre))
-            }
-
-
-            }
-        }
-
-    }
 }

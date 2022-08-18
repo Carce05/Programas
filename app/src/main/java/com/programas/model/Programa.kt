@@ -1,6 +1,7 @@
 package com.programas.model
 
 import android.os.Parcelable
+import android.text.format.Time
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -11,25 +12,15 @@ data class Programa(
 
     val nombre: String,
 
-    val correo: String?,
+    val cadena: String?,
 
-    val telefono: String?,
+    val canal: Int?,
 
-    val web: String?,
-
-    val latitud: Double?,
-
-    val logitud: Double?,
-
-    val altura: Double?,
-
-    val rutaAudio: String?,
-
-    val rutaImagen: String?,
+    val horaTransmision: Double?
 
     ) : Parcelable{
 
 
 constructor () :
-this("", "", "", "", "", 0.0, 0.0, 0.0, "", "")
+this("", "", "", 0, 0.0)
 }

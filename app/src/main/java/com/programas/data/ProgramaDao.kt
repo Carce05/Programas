@@ -16,7 +16,7 @@ import com.programas.model.Programa
 class ProgramaDao {
 
     private  val  coleccion1="programasApp"
-    private val usuario=Firebase.auth.currentUser?.email.toString()
+
     private  val  coleccion2="misProgramas"
 //Obtener la instancia de base de datos en fiestore
 
@@ -29,7 +29,7 @@ class ProgramaDao {
     fun getAllData() : MutableLiveData<List<Programa>>{
         val listaProgramas = MutableLiveData<List<Programa>>()
 
-        firestore.collection(coleccion1).document(usuario).collection(coleccion2)
+        firestore.collection(coleccion1).document("Programas").collection(coleccion2)
 
             .addSnapshotListener{instantanea, e ->
                 if (e !=null) {
@@ -54,10 +54,10 @@ class ProgramaDao {
     fun savePrograma(programa: Programa){
         val documento : DocumentReference
         if (programa.id.isEmpty()){
-            documento =firestore.collection(coleccion1).document(usuario).collection(coleccion2).document()
+            documento =firestore.collection(coleccion1).document("Programas").collection(coleccion2).document()
             programa.id =documento.id
         }else{
-            documento =firestore.collection(coleccion1).document(usuario).collection(coleccion2).document(programa.id)
+            documento =firestore.collection(coleccion1).document("Programas").collection(coleccion2).document(programa.id)
 
         }
         documento.set(programa)
@@ -74,7 +74,7 @@ class ProgramaDao {
 
    fun deletePrograma(programa: Programa){
         if (programa.id.isNotEmpty()){
-            firestore.collection(coleccion1).document(usuario).collection(coleccion2).document(programa.id).delete()
+            firestore.collection(coleccion1).document("Programas").collection(coleccion2).document(programa.id).delete()
 
 
                 .addOnSuccessListener {

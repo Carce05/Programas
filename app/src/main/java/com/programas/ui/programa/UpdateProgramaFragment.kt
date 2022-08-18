@@ -20,6 +20,7 @@ import java.nio.file.Files.delete
 import android.Manifest
 import android.media.MediaPlayer
 import com.bumptech.glide.Glide
+import java.text.DecimalFormat
 
 class UpdateProgramaFragment : Fragment() {
     private val args by navArgs<UpdateProgramaFragmentArgs>()
@@ -40,81 +41,24 @@ class UpdateProgramaFragment : Fragment() {
 
         //Se coloca la info del objeto programa que pasaron
         binding.etNombre.setText(args.programa.nombre)
-        binding.etTelefono.setText(args.programa.telefono)
-        binding.etCorreo.setText(args.programa.correo)
-        binding.etWeb.setText(args.programa.web)
-
-        binding.tvAltura.text=args.programa.altura.toString()
-        binding.tvAltura.text=args.programa.latitud.toString()
-        binding.tvAltura.text=args.programa.logitud.toString()
+        binding.etCadena.setText(args.programa.cadena)
+        binding.etCanal.setText(args.programa.canal.toString())
+        binding.etHoraTransmision.setText(args.programa.horaTransmision.toString())
 
         //Se agrega la funcion para actualizar un programa
         binding.btActualizar.setOnClickListener { updatePrograma() }
 
-        binding.btEmail.setOnClickListener{escribirCorreo()}
         binding.btPhone.setOnClickListener({llamarPrograma()})
-        binding.btWhatsapp.setOnClickListener({enviarWhatsApp()})
-        binding.btWeb.setOnClickListener({verWeb()})
-        if(args.programa.rutaAudio?.isNotEmpty()==true){
-            mediaPlayer = MediaPlayer()
-            mediaPlayer.setDataSource(args.programa.rutaAudio)
-            mediaPlayer.prepare()
-            binding.btPlay.isEnabled=true
-            binding.btPlay.setOnClickListener{mediaPlayer.start()}
-
-        }else{
-            binding.btPlay.isEnabled=false
-        }
-
-        if(args.programa.rutaAudio?.isNotEmpty()==true){
-            Glide.with(requireContext())
-                .load(args.programa.rutaImagen)
-                .fitCenter()
-                .into(binding.imagen)
-
-        }
-        binding.btLocation.setOnClickListener({verMapa()})
 
         //Se indica que en esta pantalla se agrega opcion de menu
         setHasOptionsMenu(true)
         return binding.root
     }
 
-    private fun enviarWhatsApp() {
-        val telefono = binding.etTelefono.text.toString()
-        if (telefono.isNotEmpty()) {
-            val sendIntent = Intent(Intent.ACTION_VIEW)
-            val uri = "whatsapp://send?phone=506$telefono&text="+getString(R.string.msg_saludos)
-            val rutina = Intent(Intent.ACTION_CALL)
-            sendIntent.setPackage("com.whatsapp")
-            sendIntent.data=Uri.parse(uri)
-            startActivity(sendIntent)
 
-        } else {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.msg_datos),Toast.LENGTH_SHORT
-            ).show()
-        }
-
-
-    }
-
-    private fun verMapa() {
-        val latitud=binding.tvLatitud.text.toString().toDouble()
-        val longitud=binding.tvLongitud.text.toString().toDouble()
-        if (latitud.isFinite() && longitud.isFinite()){
-            val location = Uri.parse("geo:$latitud,$longitud?z18")
-            val mapIntent = Intent(Intent.ACTION_VIEW, location)
-            startActivity(mapIntent)
-        }else{
-
-        }
-
-    }
 
     private fun llamarPrograma() {
-        val recurso = binding.etTelefono.text.toString()
+        val recurso = "72900199"
         if (recurso.isNotEmpty()) {
             //Se activa el correo
             val rutina = Intent(Intent.ACTION_CALL)
@@ -135,39 +79,7 @@ class UpdateProgramaFragment : Fragment() {
         }
     }
 
-    private fun verWeb() {
-        //Se recupera el url del programa...
-        val recurso = binding.etWeb.text.toString()
-        if (recurso.isNotEmpty()) {
-            //Se abre el sitio web
-            val rutina = Intent(Intent.ACTION_VIEW, Uri.parse("http://$recurso"))
-            startActivity(rutina)  //Levanta el browser y se ve el sitio web
-        } else {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.msg_datos),Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
 
-    private fun escribirCorreo() {
-        //Se recupera el correo del programa...
-        val recurso = binding.etCorreo.text.toString()
-        if (recurso.isNotEmpty()) {
-            //Se activa el correo
-            val rutina = Intent(Intent.ACTION_SEND)
-            rutina.type="message/rfc822"
-            rutina.putExtra(Intent.EXTRA_EMAIL, arrayOf(recurso))
-            rutina.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.msg_saludos)+ " "+binding.etNombre.text)
-            rutina.putExtra(Intent.EXTRA_TEXT, getString(R.string.msg_mensaje_correo))
-            startActivity(rutina)//Levanta correo y lo presnta para modificar y enviar
-        } else {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.msg_datos),Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.delete_menu, menu)
@@ -205,12 +117,12 @@ class UpdateProgramaFragment : Fragment() {
 
     private fun updatePrograma() {
         val nombre=binding.etNombre.text.toString()
-        val correo=binding.etCorreo.text.toString()
-        val telefono=binding.etTelefono.text.toString()
-        val web=binding.etWeb.text.toString()
+        val cadena=binding.etCadena.text.toString()
+        val canal= Integer.parseInt(binding.etCanal.text.toString())
+        val horaTransmision= binding.etHoraTransmision.text.toString().toDouble()
 
         if (nombre.isNotEmpty()){
-            val programa = Programa(args.programa.id, nombre, correo, telefono, web, 0.0, 0.0, 0.0, "", "")
+            val programa = Programa(args.programa.id, nombre, cadena, canal, horaTransmision)
             programaViewModel.savePrograma(programa)
             Toast.makeText(requireContext(), getString(R.string.programaAdded), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateProgramaFragment_to_nav_programa)

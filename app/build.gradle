@@ -66,11 +66,11 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.1"
 
-//Para clases más adelante  gps y cámara
+//gps y cámara
     implementation 'com.google.android.gms:play-services-location:20.0.0'
     implementation 'androidx.camera:camera-camera2:1.1.0'
 
-//Para clases más adelante usar imágenes y RecyclerView
+//usar imágenes y RecyclerView
     implementation 'com.github.bumptech.glide:glide:4.13.0'
    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 

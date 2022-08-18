@@ -19,14 +19,10 @@ class ProgramaAdapter : RecyclerView.Adapter<ProgramaAdapter.ProgramaViewHolder>
 
         fun dibuja(programa: Programa){
             itemBinding.tvNombre.text=programa.nombre
-            itemBinding.tvCorreo.text=programa.correo
-            itemBinding.tvTelefono.text=programa.telefono
-            itemBinding.tvWeb.text=programa.web
+            itemBinding.tvCadena.text=programa.cadena
+            itemBinding.tvCanal.text=programa.canal.toString()
+            itemBinding.tvHoraTransmision.text=programa.horaTransmision.toString()
 
-            Glide.with(itemBinding.root.context)
-                .load(programa.rutaImagen)
-                .circleCrop()
-                .into(itemBinding.imagen)
 
 
             itemBinding.vistaFila.setOnClickListener{

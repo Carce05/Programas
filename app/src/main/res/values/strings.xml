@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">Programas</string>
-    <string name="default_web_client_id" translatable="false">401579333384-slqkdn3a3kb1ngikth3tm9l9886n46so.apps.googleusercontent.com</string>
-    <string name="google_maps_key" translatable="false">AIzaSyAjM26qou7FVcnfPCM6AMx3Fp1NBRpm308</string>
+    <string name="app_name">Programas</string>
+    
     <string name="tv_correo">Correo</string>
     <string name="tv_clave">Contraseña</string>
     <string name="msg_fallo_registro">Fallo el registro</string>
@@ -14,7 +13,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_programa">Programas</string>
+    <string name="menu_programa">Programa</string>
     <string name="menu_gallery">Mapa</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -65,5 +64,8 @@
     <string name="tv_longitud1">Longitud</string>
     <string name="tv_altura1">Altura</string>
     <string name="todo">por definr</string>
+    <string name="msg_cadena">Cadena</string>
+    <string name="msg_canal">Canal</string>
+    <string name="msg_hora_transmision">Hora de transmisión</string>
 
 </resources>
